@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { navData } from "./navAssets";
 import NavImg from "./navAssets/smallellipse.png";
-import NavLink from "./NavLinks";
+import Link from "./NavLinks";
 
 import { useSpring, animated } from "react-spring";
 
@@ -28,9 +28,9 @@ const CollapseMenu = props => {
         <NavLinks>
           {navData.map(item => (
             <li key={item.id}>
-              <NavLink activeStyling={activeStyles} to={item.to}>
+              <Link activeStyling={activeStyles} to={item.to}>
                 {item.name}
-              </NavLink>
+              </Link>
             </li>
           ))}
         </NavLinks>
@@ -58,7 +58,8 @@ const NavLinks = styled.ul`
   justify-content: space-evenly;
   align-items: left;
   flex-direction: column;
-  height: 70%;
+  height: 100%;
+  background: white;
 
   & li {
     transition: all 300ms linear 0s;
