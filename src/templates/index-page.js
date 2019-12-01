@@ -5,7 +5,7 @@ import Layout from '../components/Layout'
 export function IndexPageTemplate({}) {
   return (
     <>
-      <h1>Index Page</h1>
+      <h1>Index Pagee</h1>
     </>
   )
 }
