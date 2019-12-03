@@ -5,8 +5,8 @@ import Img from "gatsby-image";
 
 const Hero = ({ hero }) => {
   const FlexContainer = styled.div`
-    height: 93vh;
-    margin: 10vh 0px;
+    height: 100vh;
+    margin: 10vh auto;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -14,7 +14,7 @@ const Hero = ({ hero }) => {
     & .hero_left {
       max-width: 500px;
       width: 500px;
-      margin-right: 20px;
+      margin-left: 20px;
       padding: 10px;
       h1 {
         font-size: 46px;

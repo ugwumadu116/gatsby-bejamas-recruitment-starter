@@ -9,7 +9,6 @@ const Blogs = ({ winSize, posts }) => {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 70vh;
       flex-direction: column;
       button {
         background: white;
@@ -17,8 +16,14 @@ const Blogs = ({ winSize, posts }) => {
         border-radius: 32px;
         color: #4285bc;
         height: 38px;
-        width:140px;
+        width: 140px;
+        font-weight: bold;
         margin-top: 58px;
+        cursor: pointer;
+        &:hover {
+          color: #ffffff;
+          background: #4285bc;
+        }
       }
     `;
 
