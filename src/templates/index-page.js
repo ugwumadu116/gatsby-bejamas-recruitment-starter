@@ -5,14 +5,16 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import Intro from '../components/Intro'
 import Logos from '../components/Logos';
+import Blogs from "../components/Blogs";
 
-export function IndexPageTemplate({ winSize, intro, hero,  }) {
-  // console.log(logos);
+export function IndexPageTemplate({ winSize, intro, hero, posts }) {
+         // console.log(logos);
          return (
            <>
              <Hero hero={hero} />
              <Intro intro={intro} />
              <Logos winSize={winSize} />
+             <Blogs winSize={winSize} posts={posts} />
            </>
          );
        }
@@ -35,12 +37,19 @@ function IndexPage({ data }) {
     frontmatter: { title, intro, hero }
   } = data.markdownRemark;
 
+  const {
+    edges
+  } = data.allMarkdownRemark;
+  const posts = edges.filter(edge => !!edge.node.frontmatter.date);
+
+
   return (
     <Layout winSize={size} title={title}>
       <IndexPageTemplate
         winSize={size}
         hero={hero}
         intro={intro}
+        posts={posts}
       />
     </Layout>
   );
@@ -77,9 +86,48 @@ export const pageQuery = graphql`
                    }
                  }
                }
-               
+             }
+           }
+
+           allMarkdownRemark(
+             sort: { fields: [frontmatter___date], order: DESC }
+           ) {
+             edges {
+               node {
+                 excerpt(pruneLength: 50)
+                 fields {
+                   slug
+                 }
+                 frontmatter {
+                   date(formatString: "DD MMMM, YYYY")
+                   title
+                   featuredimage {
+                     childImageSharp {
+                       sizes(maxWidth: 830) {
+                         ...GatsbyImageSharpSizes
+                       }
+                     }
+                   }
+                 }
+               }
              }
            }
          }
        `;
    
+
+      //  allMarkdownRemark(
+      //        sort: { order: DESC, fields: [frontmatter___date] }
+      //      ) {
+      //        edges {
+      //          node {
+      //            id
+      //            excerpt(pruneLength: 250)
+      //            frontmatter {
+      //              date(formatString: "MMMM DD, YYYY")
+      //              path
+      //              title
+      //            }
+      //          }
+      //        }
+      //      }
