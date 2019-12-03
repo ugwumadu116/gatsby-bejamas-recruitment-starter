@@ -9,29 +9,18 @@ import { createGlobalStyle } from 'styled-components';
 
 
 function Layout(props) {
-  const [navbarOpen, setNavbarOpen] = useState(false)
-
-  const [size, setSize] = useState(100);
-
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize(window.innerWidth);
-    }
-    window.addEventListener("resize", updateSize);
-    updateSize();
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const handleNavbar = () => {
-    setNavbarOpen(!navbarOpen)
-    
+    setNavbarOpen(!navbarOpen);
   };
-  const { title: defaultTitle, description: defaultDescription } = useSiteMetadata()
+  const {
+    title: defaultTitle,
+    description: defaultDescription
+  } = useSiteMetadata();
   const title = props.title || defaultTitle
   const description = props.description || defaultDescription
 
-
-  
   return (
     <div>
       <Helmet>
@@ -48,7 +37,7 @@ function Layout(props) {
       <GlobalStyles />
       <Navbar
         navbarState={navbarOpen}
-        size={size}
+        size={props.winSize}
         handleNavbar={handleNavbar}
       />
 

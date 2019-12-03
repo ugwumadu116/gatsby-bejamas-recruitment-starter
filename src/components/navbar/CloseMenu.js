@@ -45,10 +45,11 @@ export default CollapseMenu;
 const CollapseWrapper = styled(animated.div)`
   /* background: red; */
   position: fixed;
-  top: 4.5rem;
+  top: 5.9rem;
   left: 0;
   right: 0;
   bottom: 0px;
+  z-index: 999;
 `;
 
 const NavLinks = styled.ul`
@@ -60,6 +61,7 @@ const NavLinks = styled.ul`
   flex-direction: column;
   height: 100%;
   background: white;
+  z-index: 999;
 
   & li {
     transition: all 300ms linear 0s;
