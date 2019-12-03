@@ -5,6 +5,7 @@ import { useSiteMetadata } from '../lib/hooks'
 import Navbar from './navbar/Navbar'
 
 import { createGlobalStyle } from 'styled-components';
+import Footer from "./Footer";
 
 
 
@@ -42,6 +43,7 @@ function Layout(props) {
       />
 
       <main>{props.children}</main>
+      <Footer />
     </div>
   );
 }
