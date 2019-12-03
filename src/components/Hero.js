@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import HeroImage from "../assets/img/56256.png";
+import Img from "gatsby-image";
 
-const Hero = () => {
+
+const Hero = ({ hero }) => {
   const FlexContainer = styled.div`
     height: 93vh;
     margin: 10vh 0px;
@@ -12,6 +13,7 @@ const Hero = () => {
     align-items: center;
     & .hero_left {
       max-width: 500px;
+      width: 500px;
       margin-right: 20px;
       padding: 10px;
       h1 {
@@ -36,6 +38,7 @@ const Hero = () => {
     }
     & .hero_right {
       max-width: 500px;
+      width: 500px;
       margin: 10px 5px;
 
       img {
@@ -52,14 +55,16 @@ const Hero = () => {
   return (
     <FlexContainer>
       <div className="hero_left">
-        <h1>Start new… Today!</h1>
-        <p>
-          Vivamus vestibulum elit efficitur, elementum sapien a, aliquet ipsum
-        </p>
+        <h1>{hero.heading}</h1>
+        <p>{hero.subheading}</p>
       </div>
-      <div className="hero_right">
-        <div className="imageContainer">
-          <img src={HeroImage} alt="Hero image" />
+      <div
+        className="hero_right"
+      >
+        <div
+          style={{ width: "80%"}}
+        >
+          <Img fluid={hero.image.childImageSharp.fluid} alt="Hero image" />
         </div>
       </div>
     </FlexContainer>
